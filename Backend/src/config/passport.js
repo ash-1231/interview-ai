@@ -5,7 +5,7 @@ const userModel = require("../models/users.model");
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "/api/auth/google/callback"
+  callbackURL: "https://interview-ai-1deg.onrender.com/api/auth/google/callback"
 },
 async (accessToken, refreshToken, profile, done) => {
 
