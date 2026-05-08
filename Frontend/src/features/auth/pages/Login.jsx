@@ -16,7 +16,7 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "https://interview-ai-one-psi.vercel.app/api/auth/google";
+    window.location.href = "https://interview-ai-1deg.onrender.com/api/auth/google";
   };
 
  if (loading) {
