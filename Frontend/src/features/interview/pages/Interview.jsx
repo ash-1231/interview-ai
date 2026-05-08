@@ -12,10 +12,10 @@ const auth = useAuth();
 const handleLogout = auth?.handleLogout;
 const navigate = useNavigate();
 
-
 const onLogout = async () => {
-    await handleLogout();
-    navigate("/login");
+  if (!handleLogout) return;
+  await handleLogout();
+  navigate("/login");
 };
 
 // Question Card
