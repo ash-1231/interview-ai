@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate, useParams } from 'react-router'
-import { useAuth } from '../../auth/hooks/useAuth.js'
 
 const NAV_ITEMS = [
     { id: 'technical', label: 'Technical Questions' },
     { id: 'behavioral', label: 'Behavioral Questions' },
     { id: 'roadmap', label: 'Road Map' },
 ]
-const auth = useAuth();
-const handleLogout = auth?.handleLogout;
-const navigate = useNavigate();
-
-const onLogout = async () => {
-  if (!handleLogout) return;
-  await handleLogout();
-  navigate("/login");
-};
 
 // Question Card
 const QuestionCard = ({ item, index }) => {
@@ -126,12 +116,6 @@ const Interview = () => {
                 >
                     Download Resume
                 </button>
-                <button
-                 onClick={onLogout}
-                 className="mt-6 w-full bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg"
-                 >
-                  Logout
-                </button>
             </aside>
 
             {/* Main Content */}
@@ -201,4 +185,3 @@ const Interview = () => {
 }
 
 export default Interview
-
