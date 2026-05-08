@@ -62,7 +62,7 @@ return (
 
     <button
         onClick={onLogout}
-        className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg"
+        className="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-lg cursor-pointer font-semibold shadow-lg transition"
     >
         Logout
     </button>
