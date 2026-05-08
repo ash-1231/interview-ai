@@ -8,7 +8,8 @@ const Home = () => {
     const [jobDescription, setJobDescription] = useState("")
     const [selfDescription, setSelfDescription] = useState("")
     const resumeInputRef = useRef()
-    const { handleLogout } = useAuth();
+    const auth = useAuth();
+const handleLogout = auth?.handleLogout;
 
     const navigate = useNavigate()
 
