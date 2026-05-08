@@ -57,7 +57,7 @@ authRouter.get("/google/callback",
 
     res.cookie("token", token);
 
-    res.redirect("http://localhost:5173/dashboard");
+    res.redirect("https://interview-ai-one-psi.vercel.app/dashboard");
   }
 );
 
