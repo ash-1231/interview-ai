@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 app.use(cors({
-  origin: "https://interview-ai-one-psi.vercel.app/",
+  origin: "https://interview-ai-one-psi.vercel.app",
   credentials: true
 }))
 
