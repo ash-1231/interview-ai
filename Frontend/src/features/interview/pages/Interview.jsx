@@ -8,7 +8,8 @@ const NAV_ITEMS = [
     { id: 'behavioral', label: 'Behavioral Questions' },
     { id: 'roadmap', label: 'Road Map' },
 ]
-const { handleLogout } = useAuth();
+const auth = useAuth();
+const handleLogout = auth?.handleLogout;
 const navigate = useNavigate();
 
 
