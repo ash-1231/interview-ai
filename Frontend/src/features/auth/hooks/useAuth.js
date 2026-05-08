@@ -6,7 +6,18 @@ import { login, register, logout, getMe } from "../services/auth.api";
 
 export const useAuth = () => {
 
-    const context = useContext(AuthContext)
+    const context = useContext(AuthContext);
+
+if (!context) {
+  console.error("AuthContext is null");
+  return {
+    user: null,
+    loading: false,
+    handleLogin: () => {},
+    handleRegister: () => {},
+    handleLogout: () => {}
+  };
+}
     const { user, setUser, loading, setLoading } = context
 
 
