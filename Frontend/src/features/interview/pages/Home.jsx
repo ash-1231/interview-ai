@@ -1,12 +1,14 @@
 import React, { useState, useRef } from 'react'
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
+import { useAuth } from "../../auth/hooks/useAuth.js"
 
 const Home = () => {
     const { loading, generateReport, reports } = useInterview()
     const [jobDescription, setJobDescription] = useState("")
     const [selfDescription, setSelfDescription] = useState("")
     const resumeInputRef = useRef()
+    const { handleLogout } = useAuth();
 
     const navigate = useNavigate()
 
@@ -15,6 +17,10 @@ const Home = () => {
         const data = await generateReport({ jobDescription, selfDescription, resumeFile })
         navigate(`/interview/${data._id}`)
     }
+    const onLogout = async () => {
+    await handleLogout();
+    navigate("/login");
+    };
 
   if (loading) {
   return (
@@ -41,16 +47,27 @@ return (
     <div className="min-h-screen bg-[#0b0f17] text-white px-6 py-12">
 
         {/* Header */}
-        <header className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold">
-                Create Your Custom{" "}
-                <span className="text-pink-500">Interview Plan</span>
-            </h1>
-            <p className="text-gray-400 mt-3">
-                Let our AI analyze the job requirements and your unique profile
-                to build a winning strategy.
-            </p>
-        </header>
+    <header className="flex justify-between items-center mb-12">
+
+    <div className="text-left">
+        <h1 className="text-4xl md:text-5xl font-bold">
+            Create Your Custom{" "}
+            <span className="text-pink-500">Interview Plan</span>
+        </h1>
+        <p className="text-gray-400 mt-3">
+            Let our AI analyze the job requirements and your unique profile
+            to build a winning strategy.
+        </p>
+    </div>
+
+    <button
+        onClick={onLogout}
+        className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg"
+    >
+        Logout
+    </button>
+
+</header>
 
         {/* Card */}
         <div className="max-w-6xl mx-auto bg-[#111827] border border-gray-800 rounded-2xl shadow-xl overflow-hidden">
