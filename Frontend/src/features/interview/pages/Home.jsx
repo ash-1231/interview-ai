@@ -18,10 +18,11 @@ const handleLogout = auth?.handleLogout;
         const data = await generateReport({ jobDescription, selfDescription, resumeFile })
         navigate(`/interview/${data._id}`)
     }
-    const onLogout = async () => {
-    await handleLogout();
-    navigate("/login");
-    };
+   const onLogout = async () => {
+  if (!handleLogout) return;
+  await handleLogout();
+  navigate("/login");
+};
 
   if (loading) {
   return (
