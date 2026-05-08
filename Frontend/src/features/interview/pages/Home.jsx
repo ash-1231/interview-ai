@@ -8,8 +8,7 @@ const Home = () => {
     const [jobDescription, setJobDescription] = useState("")
     const [selfDescription, setSelfDescription] = useState("")
     const resumeInputRef = useRef()
-    const auth = useAuth();
-const handleLogout = auth?.handleLogout;
+    const { handleLogout } = useAuth();
 
     const navigate = useNavigate()
 
@@ -18,11 +17,10 @@ const handleLogout = auth?.handleLogout;
         const data = await generateReport({ jobDescription, selfDescription, resumeFile })
         navigate(`/interview/${data._id}`)
     }
-   const onLogout = async () => {
-  if (!handleLogout) return;
-  await handleLogout();
-  navigate("/login");
-};
+    const onLogout = async () => {
+    await handleLogout();
+    navigate("/login");
+    };
 
   if (loading) {
   return (
@@ -61,6 +59,13 @@ return (
             to build a winning strategy.
         </p>
     </div>
+
+    <button
+        onClick={onLogout}
+        className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg"
+    >
+        Logout
+    </button>
 
 </header>
 
@@ -151,13 +156,6 @@ return (
                 >
                     Generate My Interview Strategy
                 </button>
-
-                    <button
-                     onClick={onLogout}
-                     className="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-lg font-semibold shadow-lg transition"
-                      >
-                   Logout
-                  </button>
             </div>
         </div>
     </div>
@@ -167,4 +165,3 @@ return (
 }
 
 export default Home
-
