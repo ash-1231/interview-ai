@@ -18,7 +18,7 @@ const Register = () => {
   };
 
   const handleGoogleSignup = () => {
-    window.location.href = "http://localhost:3000/api/auth/google";
+   window.location.href = "https://interview-ai-1deg.onrender.com/api/auth/google";
   };
 
 if (loading) {
